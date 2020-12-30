@@ -1,15 +1,18 @@
 package com.mong.testing.pages;
 
-import com.mong.testing.basePage.BasePage;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage extends BasePage {
+public class LoginPage {
     public LoginPage(WebDriver driver) {
-        super(driver);
+        this.driver= driver;
+        PageFactory.initElements(driver, this);
     }
 
+    protected WebDriver driver;
     @FindBy(id= "email")
     public WebElement emailField;
 
@@ -22,7 +25,7 @@ public class LoginPage extends BasePage {
     public HomePage fiiInCredentials(String email, String password) throws InterruptedException {
         emailField.sendKeys(email);
         passwordField.sendKeys(password);
-        wait(2000);
+        Thread.sleep(2000);
         submitButton.click();
         return new HomePage(driver);
     }

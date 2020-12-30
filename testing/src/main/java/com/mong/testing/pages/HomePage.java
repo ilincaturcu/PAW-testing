@@ -1,10 +1,13 @@
 package com.mong.testing.pages;
 
-import com.mong.testing.basePage.BasePage;
-import org.openqa.selenium.WebDriver;
 
-public class HomePage extends BasePage {
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+
+public class HomePage {
     public HomePage(WebDriver driver) {
-        super(driver);
+        this.driver= driver;
+        PageFactory.initElements(driver, this);
     }
+    protected  WebDriver driver;
 }
