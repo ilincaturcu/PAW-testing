@@ -35,5 +35,6 @@ public class LoginTests{
         String message = messageElement.getText();
         String successMsg = "MONG";
         Assert.assertEquals (message, successMsg);
+        driver.quit();
     }
 }
