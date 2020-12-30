@@ -27,6 +27,7 @@ public class LoginPage {
         passwordField.sendKeys(password);
         Thread.sleep(2000);
         submitButton.click();
+        Thread.sleep(2000);
         return new HomePage(driver);
     }
 }
