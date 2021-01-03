@@ -47,6 +47,10 @@ public class VolunteersPage {
     private WebElement itemsPerPage;
     @FindBy(id = "mesaj")
     private WebElement permissionMessage;
+    @FindBy(className = "imagineADD")
+    private WebElement addNewVolunteerButton;
+    @FindBy(id="home")
+    private WebElement homeTab;
 
     public VolunteersPage(WebDriver driver) {
         this.driver = driver;
@@ -145,6 +149,17 @@ public class VolunteersPage {
     }
     public String getPermissionDeniedMessage() {
         return permissionMessage.getText();
+    }
+
+    public HomePage goToHomePage()
+    {
+        homeTab.click();
+        return new HomePage(driver);
+    }
+
+    public AddNewVolunteer clickOnAddNewVolunteerButton(){
+        addNewVolunteerButton.click();
+        return  new AddNewVolunteer(driver);
     }
 
 }

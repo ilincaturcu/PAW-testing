@@ -42,4 +42,22 @@ public class LoginTests {
         Assert.assertEquals(message, successMsg);
         driver.quit();
     }
+
+
+    @Test
+    public void validateWrongFormatEmail() throws InterruptedException {
+        loginPage = new LoginPage(driver);
+        loginPage.fiiInCredentials("marin@student.ro", "marin@1998");
+
+
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebElement messageElement = wait.until(
+                ExpectedConditions.presenceOfElementLocated(By.id("error-wrong-format"))
+        );
+
+        String message = messageElement.getText();
+        String errorMsg= "Wrong format";
+        Assert.assertEquals(message, errorMsg);
+        driver.quit();
+    }
 }

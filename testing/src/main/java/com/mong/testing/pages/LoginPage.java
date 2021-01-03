@@ -22,6 +22,7 @@ public class LoginPage {
     @FindBy(id="submit")
     protected WebElement submitButton;
 
+
     public HomePage fiiInCredentials(String email, String password) throws InterruptedException {
         emailField.sendKeys(email);
         passwordField.sendKeys(password);

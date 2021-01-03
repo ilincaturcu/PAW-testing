@@ -1,9 +1,6 @@
 package com.mong.testing.tests;
 
-import com.mong.testing.pages.EditVolunteerPage;
-import com.mong.testing.pages.HomePage;
-import com.mong.testing.pages.LoginPage;
-import com.mong.testing.pages.VolunteersPage;
+import com.mong.testing.pages.*;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -24,13 +21,14 @@ public class VolunteersTests {
     private HomePage homePage;
     private VolunteersPage volunteersPagePage;
     private EditVolunteerPage editVolunteerPage;
+    private AddNewVolunteer addNewVolunteer;
     //-----------------ADMIN---------------------
-    //    private static String EMAIL = "popa@student.tuiasi.ro";
-    //    private static String PASSWORD = "popa1235";
+        private static String EMAIL = "popa@student.tuiasi.ro";
+        private static String PASSWORD = "popa1235";
 
     //-----------------VOLUNTAR---------------------
-    private static String EMAIL = "popescu@student.tuiasi.ro";
-    private static String PASSWORD = "1234";
+//    private static String EMAIL = "popescu@student.tuiasi.ro";
+//    private static String PASSWORD = "1234";
 
     private static String FILTER = "au";
     private static String TASKS_TITLE = "Taskuri";
@@ -197,4 +195,11 @@ public class VolunteersTests {
         volunteersPagePage.editVolunteer(3);
         Assert.assertEquals("The permission denied message was not displayed!", PERMISSION_DENIED_MESSAGE, volunteersPagePage.getPermissionDeniedMessage());
     }
+
+    @Test
+    public void validateAccessToAddNewVolunteerButtonAsAdmin(){
+        addNewVolunteer = volunteersPagePage.clickOnAddNewVolunteerButton();
+        Assert.assertEquals(addNewVolunteer.addTitle(), "Add a New Volunteer");
+    }
+
 }
